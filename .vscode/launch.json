@@ -1,0 +1,161 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch ejercicio7",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio7",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio6",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio6",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio5",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio5",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicioClase2Bis",
+            "request": "launch",
+            "mainClass": "ejercicioClase.ejercicioClase2Bis",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicioClase2Bis",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicioClase2Bis",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicioClase2",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicioClase2",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicioClase1",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicioClase1",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio4",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio4",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio3",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio3",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio2",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio2",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio1",
+            "request": "launch",
+            "mainClass": "Complementario2.ejercicio1",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio9",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio9",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio8",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio8",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio7",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio7",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio6",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio6",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio5",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio5",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio4",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio4",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio3",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio3",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio2",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio2",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio1",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio1",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        },
+        {
+            "type": "java",
+            "name": "Launch ejercicio2a",
+            "request": "launch",
+            "mainClass": "Complementario1.ejercicio2a",
+            "projectName": "repo-2021-informatorio_89b88ca1"
+        }
+    ]
+}
