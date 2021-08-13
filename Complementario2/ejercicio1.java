@@ -1,4 +1,4 @@
-package Complementario2;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 public class ejercicio1 {
 
     public static void main(String[] args){
+        
+        
         mostrar(captar_palabras());
 
     }
