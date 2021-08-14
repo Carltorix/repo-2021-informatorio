@@ -41,4 +41,5 @@ public class ProductoController {
     public void borrarPorId(@PathVariable("id") Long id) {
         productoRepository.deleteById(id);
     }
+
 }

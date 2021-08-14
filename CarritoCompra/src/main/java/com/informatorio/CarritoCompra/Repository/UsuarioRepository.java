@@ -1,11 +1,11 @@
 package com.informatorio.CarritoCompra.Repository;
 
 import com.informatorio.CarritoCompra.Entity.Usuario;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@RestController
-public interface UsuarioRepository extends CrudRepository<Usuario, Long> {
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 
 }

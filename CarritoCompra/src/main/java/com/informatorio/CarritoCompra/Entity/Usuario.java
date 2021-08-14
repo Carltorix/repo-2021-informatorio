@@ -1,14 +1,17 @@
 package com.informatorio.CarritoCompra.Entity;
 
+import com.informatorio.CarritoCompra.util.ValidationHelper;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -16,6 +19,10 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(unique = true)
+    @Email(regexp = ValidationHelper.EMAIL_REGEX)
+    private String nombreDeUsuario;
 
     @NotBlank
     @Size(min = 4)
@@ -34,6 +41,8 @@ public class Usuario {
     @UpdateTimestamp
     private LocalDateTime fechaUltimaModificacion;
 
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Carrito> carritos = new ArrayList<>();
 
     public Usuario() {
 
@@ -47,6 +56,14 @@ public class Usuario {
 
     public long getId() {
         return id;
+    }
+
+    public String getNombreDeUsuario() {
+        return nombreDeUsuario;
+    }
+
+    public void setNombreDeUsuario(String nombreDeUsuario) {
+        this.nombreDeUsuario = nombreDeUsuario;
     }
 
     public String getNombre() {
@@ -79,5 +96,19 @@ public class Usuario {
 
     public LocalDateTime getFechaUltimaModificacion() {
         return fechaUltimaModificacion;
+    }
+
+    public void agregarCarrito(Carrito carrito) {
+        if(!carritos.contains(carrito)){
+            carritos.add(carrito);
+            carrito.setUsuario(this);
+        }
+    }
+
+    public void removerCarrito(Carrito carrito) {
+        if (!carritos.isEmpty()){
+            carritos.remove(carrito);
+            carrito.setUsuario(null);
+        }
     }
 }
