@@ -1,52 +1,85 @@
-const grid = new Muuri('.grid', {
-    layout: {
-        rounding: false
+
+datosPer= document.getElementById('datos_personales');
+trabajo= document.getElementById('trabajo');
+estudios= document.getElementById('estudios');
+botonDatosP= document.getElementById('boton_dp');
+datosPer.style.display = 'block';
+botonDatosP.classList.add('activo');
+trabajo.style.display = 'none';
+estudios.style.display = 'none';
+
+function abrir(boton,bloque) {
+    if (bloque == "datos_personales" ){
+        datosPer.style.display = 'block';
+        trabajo.style.display = 'none';
+        estudios.style.display = 'none';
+    }else if (bloque == "trabajo" ){
+        datosPer.style.display = 'none';
+        trabajo.style.display = 'block';
+        estudios.style.display = 'none';
+    }else if (bloque == "estudios" ){
+        datosPer.style.display = 'none';
+        trabajo.style.display = 'none';
+        estudios.style.display = 'block';
     }
-});
+    grupoBoton = document.getElementById('categorias').getElementsByTagName("button");
+    for(let i=0; i<grupoBoton.length;i++){
+        if (grupoBoton[i].id == boton.id){
+            grupoBoton[i].classList.add('activo');
+        }else{
+            grupoBoton[i].classList.remove('activo');
+        }
+    }
 
-window.addEventListener('load', () => {
-    grid.refreshItems().layout();
-    document.getElementById('grid').classList.add('imagenes-cargadas');
+}
 
-    // Agregamos los listener de los enlaces para filtrar por categoria.
-    const enlaces = document.querySelectorAll('#categorias a');
-    enlaces.forEach((elemento) => {
-        elemento.addEventListener('click', (evento) => {
-            evento.preventDefault();
-            enlaces.forEach((enlace) => enlace.classList.remove('activo'));
-            evento.target.classList.add('activo');
+document.querySelectorAll(".item-contenido img").forEach(el=>{
+    el.addEventListener("click",function(ev){
+        ev.stopPropagation();
+        this.parentNode.classList.add('active');
+        this.parentNode.style.width = "110%";
+        var grupoimage = this.parentNode.parentNode.parentNode.getElementsByTagName('img');
+        for(let i=0; i<grupoimage.length;i++){
+            if(grupoimage[i] != this ){
+                grupoimage[i].style.display="none";
+            } 
+        }
+        this.classList.remove('tamImage');
+        this.classList.add('tamImage1');
+        div= this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode;
+        if (div.id = "estudios"){
+            table = this.parentNode.parentNode.parentNode.parentNode.parentNode;
+            grupoTable = div.getElementsByTagName('table');
+            for(let i=0; i<grupoTable.length;i++){
+                if(grupoTable[i].id != table.id ){
+                    grupoTable[i].style.display="none";
+                } 
+            }
+        }
+    })
+})
 
-            const categoria = evento.target.innerHTML.toLowerCase();
-            categoria === 'todos' ? grid.filter('[data-categoria]') : grid.filter(`[data-categoria="${categoria}"]`);
-        });
-    });
-
-    // Agregamos el listener para la barra de busqueda
-    document.querySelector('#barra-busqueda').addEventListener('input', (evento) => {
-        const busqueda = evento.target.value;
-        grid.filter( (item) => item.getElement().dataset.etiquetas.includes(busqueda) );
-    });
-
-    // Agregamos listener para las imagenes
-    const overlay = document.getElementById('overlay');
-    document.querySelectorAll('.grid .item img').forEach((elemento) => {
-        elemento.addEventListener('click', () => {
-            const ruta = elemento.getAttribute('src');
-            const descripcion = elemento.parentNode.parentNode.dataset.descripcion;
-
-            overlay.classList.add('activo');
-            document.querySelector('#overlay img').src = ruta;
-            document.querySelector('#overlay .descripcion').innerHTML = descripcion;
-        });
-    });
-
-    // Eventlistener del boton de cerrar
-    document.querySelector('#btn-cerrar-popup').addEventListener('click', () => {
-        overlay.classList.remove('activo');
-    });
-
-    // Eventlistener del overlay
-    overlay.addEventListener('click', (evento) => {
-        evento.target.id === 'overlay' ? overlay.classList.remove('activo') : '';
-    });
-});
+document.querySelectorAll(".item-contenido").forEach(el=>{
+    el.addEventListener("click",function(ev){
+        this.classList.remove('active');
+        this.style.width = "100%";
+        this.firstElementChild.classList.remove('tamImage1');
+        this.firstElementChild.classList.add('tamImage');
+        var grupoimage = this.parentNode.parentNode.getElementsByTagName('img');
+        for(let i=0; i<grupoimage.length;i++){
+            if(grupoimage[i] != this ){
+                grupoimage[i].style.display="inline-block";
+            } 
+        }
+        div= this.parentNode.parentNode.parentNode.parentNode.parentNode;
+        if (div.id = "estudios"){
+            table = this.parentNode.parentNode.parentNode.parentNode;
+            grupoTable = div.getElementsByTagName('table');
+            for(let i=0; i<grupoTable.length;i++){
+                if(grupoTable[i].id != table.id ){
+                    grupoTable[i].style.display="block";
+                } 
+            }
+        }
+    })
+})

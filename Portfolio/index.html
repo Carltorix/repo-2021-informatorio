@@ -17,111 +17,228 @@
                 <h1>Carlos Comba</h1>
                 <p>Desarrollador Web</p>
             </div>
-            <form action="">
-                <input type="text" class="barra-busqueda" id="barra-busqueda" placeholder="Buscar">
-            </form>
             <div class="categorias" id="categorias">
-                <a href="#" class="activo">Todos</a>
-                <a href="#">Naturaleza</a>
-                <a href="#">Ciudades</a>
-                <a href="#">Personas</a>
-                <a href="#">Animales</a>
+                <button id="boton_dp" onclick="abrir(this,'datos_personales')">Datos Personales</button>
+                <button id="boton_t" onclick="abrir(this,'trabajo')">Trabajos</button>
+                <button id="boton_e" onclick="abrir(this,'estudios')">Estudios</button>
             </div>
         </header>
 
-        <section class="grid" id="grid">
-            <div class="item" 
-                 data-categoria="ciudades"
-                 data-etiquetas="ciudades autos carros calles"
-                 data-descripcion="1.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/ciudad1.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="personas"
-                 data-etiquetas="personas mujeres"
-                 data-descripcion="2.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/persona1.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="paisajes"
-                 data-etiquetas="paisajes montañas mar playas"
-                 data-descripcion="3.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/paisaje1.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="animales"
-                 data-etiquetas="animales leones"
-                 data-descripcion="4.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/animal1.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="animales"
-                 data-etiquetas="animales pandas"
-                 data-descripcion="5.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/animal2.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="personas"
-                 data-etiquetas="personas mujeres"
-                 data-descripcion="6.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/persona2.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="paisajes"
-                 data-etiquetas="paisajes montañas niebla"
-                 data-descripcion="7.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/paisaje2.png" alt="">
-                </div>
-            </div>
-
-            <div class="item" 
-                 data-categoria="ciudades"
-                 data-etiquetas="ciudades paisajes carreteras"
-                 data-descripcion="8.- Lorem ipsum dolor sit amet consectetur."
-            >
-                <div class="item-contenido">
-                    <img src="img/ciudad2.png" alt="">
-                </div>
-            </div>
-
-            <div class="item"
-                 data-categoria="naturaleza"
-                 data-etiquetas="naturaleza hojas plantas"
-                 data-descripcion="9.- Lorem ipsum dolor sit amet consectetur.
-                    "
-            >
-                <div class="item-contenido">
-                    <img src="img/naturaleza1.png" alt="">
-                </div>
-            </div>
-        </section>
-
+        <div class="descripcion" id ="datos_personales">
+            <h2 style="text-align: left">Datos Personales</h2>
+            <br>
+            <table>
+                <tr>
+                    <th>
+                        <h3 style="text-align: left">Nombre: Carlos Alfredo Comba</h3>
+                        <br>
+                        <h3 style="text-align: left">DNI: 32.335.478</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <br>
+                        <br>
+                        <p>Familia: esposa, una hija.</p>
+                        <div class="item-contenido">
+                            <img class = "tamImage" src="img/familia.jpg" alt="">
+                        </div>
+                    </th>
+                    <th>
+                        <br>
+                        <br>
+                        <p>Hobby: Crossfit, construir</p>
+                        <div class="item-contenido">
+                            <img class = "tamImage" src="img/arreglandoAA.jpeg" alt="">
+                        </div>
+                    </th>
+                    <th>
+                        <br>
+                        <br>
+                        <p>Un Futbol con tercer tiempo</p>
+                        <div class="item-contenido">
+                            <img  class = "tamImage" src="img/tercerTiempo.jpeg" alt="">
+                        </div>
+                    </th>
+                </tr>
+                
+            </table>  
+        </div>
+        <br>
+        <br>    
+        <div class="descripcion" id ="trabajo">
+            <h2 style="text-align: left">Trabajo</h2>
+            <br>
+            <table>
+                <tr>
+                    <th style="text-align: left">
+                        <p>Profesor</p>
+                        <br>
+                        <p>13 años Profesor de Tecnologia</p>
+                        <br>
+                        <p>Arregla casi Todo, tecnico en casi todo.</p>
+                        <br>
+                        <p>6 años Tecnico en Aire Acondicionado, Electrisista(Monofasico).</p>
+                        <br>
+                        <p>Desarrollo en Symfony(4.4),SQLPostgres</p>
+                        <br>
+                        <p> hace 9 meses, Desarrollo full stack para el ministerio de educación en SIE(Sistema Integral Educativo), analisis de escenarios definición de entidades, mantenimiento y adaptación en un ambiente dinamico cambiante.</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th> 
+                    <br>
+                    <br>     
+                        <div class="item-contenido">
+                            <img class = "tamImage" src="img/trabajo.jpg" alt="">
+                        </div>
+                    </th>
+                    <th>
+                    <br>
+                    <br>
+                        <div class="item-contenido">
+                            <img class = "tamImage" src="img/trabajo2.jpg" alt="">
+                        </div>
+                    </th>
+                </tr>
+            </table>  
+        </div>
+        <br>
+        <br>  
+        <div class="descripcion" id ="estudios">
+            <h2 style="text-align: left">Estudios</h2>
+            <table>
+                <tr>
+                    <th>
+                        <div style="text-align: left" class="descripcion" id ="estudioCabecera">
+                            <p>Tecnico en Computación EET N° 24 "Simón de Iriondo"</p> 
+                            <p>Profesor de Tecnologia "Instituto Superior de Enseñanza Tecnica y Profesional"</p>
+                            <p>Tecnico en Administrador de Redes para el Sistema Educativas "Instituto Superior Rodolfo Walsh"</p> 
+                            <p>Diplomatura Superior en Pedagogia y Educación Social</p>
+                            <br>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <div class="descripcion">
+                        <table id = "javaScript">
+                            <th style="text-align: left" colspan="3">
+                                <p>Curso Realizado en la UTN de 60 horas. el trabajo final fue un juego del Test de K-Bit</p>
+                                <p>Definiciones,analiza las capacidades cognitiva de las persona de 4 años a 90 años,</p> 
+                                <p>acuerdo a la cantidad de acierto. De 15 a 30 min para resolver lo define el profesional</p>
+                                <a target = "_blank" href="https://github.com/Carltorix/ProyectoJavaScript2019.git">Repository</a>
+                            </th>
+                            <tr>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/testjavascript.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/test de k-bit.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/pantalla 3.jpg" alt="">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                        <table id = "segundaEtapa">
+                            <br>
+                            <th style="text-align: left" colspan="3">
+                                <br>
+                                <br>
+                                <p>Una bolsa de trabajo para el interior del chaco, se uso MySQL y Django. Por cuestiones de
+                                responsabilidad el trabajo se realizo entre dos.</p>
+                                <a target = "_blank" href="https://github.com/Carltorix/segundoNivelInformatorio.git">Repository</a>
+                            </th>
+                            <tr>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/djangoVistaUsuarioLogeado.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/djangoPerfilTrabajador.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/djangoResponsive.jpg" alt="">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                        <table id = "testing">
+                            <br>
+                            <th style="text-align: left">
+                                <p>Analisis de escenarios, generación de test Cases, test con postman,
+                                    teoria de testing, Informe final</p>
+                            </th>         
+                            <tr>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/testing.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/testing2.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/testing3.jpg" alt="">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                        <table id = "Sprint">
+                            <br>
+                            <th style="text-align: left">
+                                <p>Java, spring-boot, SQLpostgres
+                                    Api Rest para trabajar desde cualquier front-end
+                                    sistema agil de desarrollo</p>
+                                <a target = "_blank" href="https://github.com/Carltorix/Ejercicios-de-Java-Carlos-Comba.git">Repository</a>
+                            </th>
+                            <tr>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/spring-boot.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/spring.jpg" alt="">
+                                    </div>
+                                </th>
+                                <th>
+                                    <br>
+                                    <div class="item-contenido">
+                                        <img class = "tamImage" src="img/usoPostMan.jpg" alt="">
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>     
+                    </div>
+                </tr>
+            </table>  
+        </div>
         <section class="overlay" id="overlay">
             <div class="contenedor-img">
                 <button id="btn-cerrar-popup"><i class="fas fa-times"></i></button>
@@ -129,7 +246,6 @@
             </div>
             <p class="descripcion"></p>
         </section>
-
         <footer class="contenedor">
             <div class="redes-sociales">
                 <div class="contenedor-icono">
