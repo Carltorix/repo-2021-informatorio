@@ -21,16 +21,29 @@ public class Producto {
 
     @NotBlank
     private String nombre;
+
     private String descripcion;
+
+    private String contenido ;
+
     @Positive
     private BigDecimal precioUnitario;
+
     @NotBlank
     private String codigoInventario;
 
+    @NotBlank
+    private Boolean publicado  = false;
+
     @CreationTimestamp
     private LocalDateTime fechaAlta;
+
     @UpdateTimestamp
     private LocalDateTime fechaUltimaModificacion;
+
+    public Producto(){
+
+    }
 
     public Long getId() {
         return id;
@@ -87,5 +100,21 @@ public class Producto {
 
     public void setFechaUltimaModificacion(LocalDateTime fechaUltimaModificacion) {
         this.fechaUltimaModificacion = fechaUltimaModificacion;
+    }
+
+    public String getContenido() {
+        return contenido;
+    }
+
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
+    }
+
+    public Boolean getPublicado() {
+        return publicado;
+    }
+
+    public void setPublicado(Boolean publicado) {
+        this.publicado = publicado;
     }
 }

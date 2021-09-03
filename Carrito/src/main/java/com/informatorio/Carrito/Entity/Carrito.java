@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 public class Carrito {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,6 +26,12 @@ public class Carrito {
     @UpdateTimestamp
     private LocalDateTime fechaUltimaModificacion;
 
+    @Transient
+    private String nombreDeUsuario;
+
+    @Transient
+    private String total;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
@@ -32,9 +39,11 @@ public class Carrito {
     @OneToMany(mappedBy = "carrito", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<LineaCarrito> lineaCarritos = new ArrayList<>();
 
-    @Transient
-    private String nombreDeUsuario;
+    private boolean cierre = false;
 
+    public Carrito(){
+
+    }
     public Long getId() {
         return id;
     }
@@ -42,6 +51,7 @@ public class Carrito {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getDevice() {
         return device;
@@ -51,6 +61,7 @@ public class Carrito {
         this.device = device;
     }
 
+
     public LocalDateTime getFechaAlta() {
         return fechaAlta;
     }
@@ -58,6 +69,7 @@ public class Carrito {
     public void setFechaAlta(LocalDateTime fechaDeCreacion) {
         this.fechaAlta = fechaDeCreacion;
     }
+
 
     public LocalDateTime getFechaUltimaModificacion() {
         return fechaUltimaModificacion;
@@ -67,13 +79,31 @@ public class Carrito {
         this.fechaUltimaModificacion = fechaUltimaModificacion;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+
+    public void setNombreDeUsuario() {
+        this.nombreDeUsuario = this.getUsuario().getNombreDeUsuario();
     }
+    public String getNombreDeUsuario() {
+        return usuario.getNombreDeUsuario();
+    }
+
+
+    public String getTotal() { return total; }
+
+    public void setTotal(String total) { this.total = total; }
+
+    public boolean isCierre() { return cierre; }
+
+    public void setCierre(boolean cierre) { this.cierre = cierre; }
+
 
     public List<LineaCarrito> getLineaDeCarritos() {
         return lineaCarritos;
@@ -93,7 +123,4 @@ public class Carrito {
         }
     }
 
-    public String getNombreDeUsuario() {
-        return usuario.getNombreDeUsuario();
-    }
 }

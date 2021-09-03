@@ -1,6 +1,6 @@
 package com.informatorio.Carrito.Dto;
 
-public class OperacionLinea {
+public class OperacionCarrito {
 
     private Integer cantidad;
     private Long productoId;

@@ -1,28 +1,34 @@
 package com.informatorio.Carrito.Entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Entity
-public class LineaCarrito {
+public class LineaDetalle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    Carrito carrito;
+    Orden orden;
 
     @ManyToOne(fetch = FetchType.LAZY)
     Producto producto;
 
+    @NotBlank
     private Integer cantidad;
 
     @Transient
     private BigDecimal subTotal;
 
-    @Transient
+    @NotBlank
     private BigDecimal precioUnitario;
+
+    public LineaDetalle() {
+
+    }
 
     public Long getId() {
         return id;
@@ -32,13 +38,11 @@ public class LineaCarrito {
         this.id = id;
     }
 
-    public Carrito getCarrito() {
-        return carrito;
-    }
 
-    public void setCarrito(Carrito carrito) {
-        this.carrito = carrito;
-    }
+    public Orden getOrden() { return orden; }
+
+    public void setOrden(Orden orden) { this.orden = orden; }
+
 
     public Producto getProducto() {
         return producto;
@@ -48,6 +52,7 @@ public class LineaCarrito {
         this.producto = producto;
     }
 
+
     public Integer getCantidad() {
         return cantidad;
     }
@@ -56,9 +61,6 @@ public class LineaCarrito {
         this.cantidad = cantidad;
     }
 
-    public BigDecimal getSubTotal() {
-        return subTotal;
-    }
 
     public void setPrecioUnitario() {
         this.precioUnitario = this.getProducto().getPrecioUnitario();
@@ -66,6 +68,11 @@ public class LineaCarrito {
 
     public BigDecimal getPrecioUnitario() {
         return precioUnitario;
+    }
+
+
+    public BigDecimal getSubTotal() {
+        return subTotal;
     }
 
     public void setSubTotal() {
