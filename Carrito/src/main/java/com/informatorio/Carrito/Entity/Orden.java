@@ -5,6 +5,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class Orden {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY)
     private Carrito carrito;
 
@@ -32,9 +34,19 @@ public class Orden {
     @ManyToOne(fetch = FetchType.LAZY)
     private Usuario usuario;
 
+    @Transient
+    private double total = 0.0;
+
+    private boolean borrar = false;
+
     public Orden() {
 
     }
+
+    public Long getId() {
+        return id;
+    }
+
     public LocalDateTime getFechaAlta() {
         return fechaAlta;
     }
@@ -71,7 +83,6 @@ public class Orden {
         }
     }
 
-
     public String getObservacion() {
         return observacion;
     }
@@ -89,4 +100,19 @@ public class Orden {
         this.carrito = carrito;
     }
 
+    public boolean isBorrar() {
+        return borrar;
+    }
+
+    public void setBorrar(boolean borrar) {
+        this.borrar = borrar;
+    }
+
+    public double getTotal() {
+        for(LineaDetalle lineaDetalle:this.getLineaDetalles()){
+            var subT = lineaDetalle.getSubTotal().doubleValue();
+            this.total+=subT;
+        }
+        return this.total;
+    }
 }

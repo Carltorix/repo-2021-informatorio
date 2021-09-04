@@ -1,14 +1,14 @@
 package com.informatorio.Carrito.Entity;
 
-import com.informatorio.CarritoCompra.util.ValidationHelper;
+import com.informatorio.Carrito.util.ValidationHelper;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,19 +29,18 @@ public class Usuario {
     private String apellido;
 
     @Column(unique = true)
-    @Email(regexp = ValidationHelper.EMAIL_REGEX)
+    //@Email(regexp = ValidationHelper.EMAIL_REGEX)
     private String nombreDeUsuario;
 
-    @JsonIgnore
-    @NotBlank
+    //@NotBlank
     @Size(min = 8)
     private String password;
 
     @CreationTimestamp
-    private LocalDateTime fechaAlta;
+    private LocalDate fechaAlta;
 
     @UpdateTimestamp
-    private LocalDateTime fechaUltimaModificacion;
+    private LocalDate fechaUltimaModificacion;
 
     @NotBlank
     private String direccion;
@@ -66,10 +65,10 @@ public class Usuario {
 
     }
 
-    public Usuario(String nombre,String apellido,String direccion) {
+    public Usuario(String nombre,String apellido,String nombreDeUsuario) {
         this.setNombre(nombre);
         this.setApellido(apellido);
-        this.setDireccion(direccion);
+        this.setNombreDeUsuario(nombreDeUsuario);
     }
 
     public long getId() {
@@ -101,7 +100,7 @@ public class Usuario {
     }
 
     public void setPassword(String password) {
-        this.apellido = password;
+        this.password = password;
     }
 
     public String getDireccion() {
@@ -112,11 +111,11 @@ public class Usuario {
         this.direccion = direccion;
     }
 
-    public LocalDateTime getFechaAlta() {
+    public LocalDate getFechaAlta() {
         return fechaAlta;
     }
 
-    public LocalDateTime getFechaUltimaModificacion() {
+    public LocalDate getFechaUltimaModificacion() {
         return fechaUltimaModificacion;
     }
 
@@ -143,6 +142,7 @@ public class Usuario {
     public void setPaís(String país) {
         this.país = país;
     }
+
 
     public List<Carrito> getCarritos() { return carritos; }
 

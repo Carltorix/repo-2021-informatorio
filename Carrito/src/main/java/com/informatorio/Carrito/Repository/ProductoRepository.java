@@ -10,9 +10,10 @@ import java.util.List;
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-    @Query("SELECT pro FROM Producto pro where pro.nombre like %?1%")
-    public List<Producto> findByNombre(String nombre);
+    //@Query("SELECT pro FROM Producto pro where pro.nombre like %?1%")
+    List<Producto> findByNombreContaining(String nombre);
 
-    @Query("SELECT pro FROM Producto pro where pro.publicado = false ")
-    public List<Producto> findAllBySinPlublicar();
+    //@Query("SELECT pro FROM Producto pro where pro.publicado = false ")
+    List<Producto> findByPublicadoFalse();
+    List<Producto> findByPublicadoTrue();
 }

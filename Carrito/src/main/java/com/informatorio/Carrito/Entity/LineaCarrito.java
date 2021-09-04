@@ -1,5 +1,7 @@
 package com.informatorio.Carrito.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -10,10 +12,12 @@ public class LineaCarrito {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name = "carrito_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     Carrito carrito;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     Producto producto;
 
     private Integer cantidad;
@@ -23,6 +27,10 @@ public class LineaCarrito {
 
     @Transient
     private BigDecimal precioUnitario;
+
+    public LineaCarrito(){
+
+    }
 
     public Long getId() {
         return id;
@@ -57,18 +65,13 @@ public class LineaCarrito {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
-    }
-
-    public void setPrecioUnitario() {
-        this.precioUnitario = this.getProducto().getPrecioUnitario();
+        return this.subTotal = this.getProducto().getPrecioUnitario().multiply(new BigDecimal(this.getCantidad()));
     }
 
     public BigDecimal getPrecioUnitario() {
-        return precioUnitario;
+       return this.precioUnitario = this.getProducto().getPrecioUnitario();
     }
 
-    public void setSubTotal() {
-        this.subTotal = this.getProducto().getPrecioUnitario().multiply(new BigDecimal(this.getCantidad()));
-    }
+
+
 }

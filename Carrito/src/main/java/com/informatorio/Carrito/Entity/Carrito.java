@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Carrito {
     private String nombreDeUsuario;
 
     @Transient
-    private String total;
+    private double total = 0.0;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -44,6 +45,10 @@ public class Carrito {
     public Carrito(){
 
     }
+    public Carrito(String device){
+        this.setDevice(device);
+    }
+
     public Long getId() {
         return id;
     }
@@ -91,16 +96,22 @@ public class Carrito {
     public void setNombreDeUsuario() {
         this.nombreDeUsuario = this.getUsuario().getNombreDeUsuario();
     }
+
     public String getNombreDeUsuario() {
         return usuario.getNombreDeUsuario();
     }
 
 
-    public String getTotal() { return total; }
+    public double getTotal() {
+        for(LineaCarrito lineaCarrito:this.getLineaDeCarritos()){
+            var subT = lineaCarrito.getSubTotal().doubleValue();
+            this.total+=subT;
+        }
+        return this.total;
+    }
 
-    public void setTotal(String total) { this.total = total; }
 
-    public boolean isCierre() { return cierre; }
+    public boolean getCierre() { return cierre; }
 
     public void setCierre(boolean cierre) { this.cierre = cierre; }
 

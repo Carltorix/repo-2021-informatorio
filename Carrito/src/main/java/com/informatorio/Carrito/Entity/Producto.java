@@ -24,7 +24,7 @@ public class Producto {
 
     private String descripcion;
 
-    private String contenido ;
+    private String contenido;
 
     @Positive
     private BigDecimal precioUnitario;
@@ -32,8 +32,7 @@ public class Producto {
     @NotBlank
     private String codigoInventario;
 
-    @NotBlank
-    private Boolean publicado  = false;
+    private Boolean publicado  = true;
 
     @CreationTimestamp
     private LocalDateTime fechaAlta;
