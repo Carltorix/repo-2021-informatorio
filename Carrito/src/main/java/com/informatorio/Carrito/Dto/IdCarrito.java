@@ -1,6 +1,8 @@
 package com.informatorio.Carrito.Dto;
 
-public class IdCarrito {
+import java.io.Serializable;
+
+public class IdCarrito implements Serializable {
 
     private long id;
     private String observacion;

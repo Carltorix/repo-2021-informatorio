@@ -1,11 +1,15 @@
 package com.informatorio.Carrito.Dto;
 
-import javax.validation.constraints.NotBlank;
 
-public class CreateCarrito {
+import java.io.Serializable;
+
+public class CreateCarrito implements Serializable {
 
     private String device;
 
+    public CreateCarrito(){
+
+    }
     public CreateCarrito(String device) {
         this.device = device;
     }

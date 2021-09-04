@@ -1,9 +1,9 @@
 package com.informatorio.Carrito.Controller;
 
 
-import com.informatorio.Carrito.Entity.Producto;
 import com.informatorio.Carrito.Entity.Usuario;
 import com.informatorio.Carrito.Repository.UsuarioRepository;
+import com.informatorio.Carrito.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -11,22 +11,37 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 public class UsuarioController {
 
-    @Autowired
+
     private UsuarioRepository usuarioRepository;
+    private final UsuarioService usuarioService;
+
+    @Autowired
+    public UsuarioController(UsuarioRepository usuarioRepository, UsuarioService usuarioService) {
+        this.usuarioRepository = usuarioRepository;
+        this.usuarioService = usuarioService;
+    }
 
     @PostMapping(value = "/usuario")
-    public Usuario createUsuario(@RequestBody Usuario usuario) {
-        return usuarioRepository.save(usuario);
+    public ResponseEntity<?> createUsuario(@RequestBody Usuario usuario) {
+        try {
+            return  ResponseEntity.ok(usuarioRepository.save(usuario));
+        }catch (Exception e){
+            return new ResponseEntity<>("El correo ya existe, cambielo", HttpStatus.NOT_ACCEPTABLE);
+        }
     }
 
     @GetMapping(value = "/usuario/{id}")
-    public Usuario getUsuarioPorId(@PathVariable("id") Long id) {
-        return usuarioRepository.findById(id).get();
+    public ResponseEntity<?> getUsuarioPorId(@PathVariable("id") Long id) {
+
+        try {
+            return ResponseEntity.ok(usuarioRepository.findById(id).get());
+        }catch(Exception e){
+            return new ResponseEntity<>("El usuario no existe", HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/usuario")
@@ -34,46 +49,39 @@ public class UsuarioController {
             @RequestParam(value = "fecha", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaDeCreacion,
             @RequestParam(name = "cuidad", required = false) String cuidad
     ) {
-        if (fechaDeCreacion != null){
-            return new ResponseEntity(usuarioRepository.findByFechaAltaAfter(fechaDeCreacion), HttpStatus.OK);
-        }else if (cuidad != null) {
-            return new ResponseEntity(usuarioRepository.findByCiudad(cuidad), HttpStatus.OK);
-        }else{
-            return new ResponseEntity(usuarioRepository.findAll(), HttpStatus.OK);
-        }
+        return this.usuarioService.mostrarUsuarios(fechaDeCreacion,cuidad);
     }
 
     @PutMapping(value = "/usuario/{id}")
-    public Usuario modificarUsuario(@PathVariable("id") Long id,
-                                    @RequestBody Usuario usuario) {
-        Usuario usuarioE = usuarioRepository.findById(id).get();
-        if(usuario.getNombreDeUsuario() != null) {
-            usuarioE.setNombreDeUsuario(usuario.getNombreDeUsuario());
+    public ResponseEntity<?> modificaPorIdUsuario(@PathVariable("id") Long id,
+                                                  @RequestBody Usuario usuario) {
+        try {
+            try {
+                return ResponseEntity.ok(this.usuarioService.modificarUsuario(id, usuario));
+            }catch(Exception e){
+                return new ResponseEntity<>("El mail es repetido", HttpStatus.BAD_REQUEST);
+            }
+        }catch(Exception e){
+            return new ResponseEntity<>("El usuario no existe", HttpStatus.NOT_FOUND);
         }
-        if(usuario.getDireccion() != null) {
-            usuarioE.setDireccion(usuario.getDireccion());
-        }
-        if(usuario.getCiudad() != null) {
-            usuarioE.setCiudad(usuario.getCiudad());
-        }
-        if(usuario.getProvincia() != null) {
-            usuarioE.setProvincia(usuario.getProvincia());
-        }
-        if(usuario.getPaís() != null) {
-            usuarioE.setPaís(usuario.getPaís());
-        }
-        return usuarioRepository.save(usuarioE);
     }
 
     @DeleteMapping(value = "/usuario/{id}")
-    public void borrarPorId(@PathVariable("id") Long id) {
-        Usuario usuario = usuarioRepository.findById(id).get();
-        if(!usuario.getBaja()) {
-            if (usuario.getCarritos().size() == 0) {
-                usuarioRepository.deleteById(id);
-            } else {
-                usuario.setBaja(true);
+    public ResponseEntity<?> borrarPorId(@PathVariable("id") Long id) {
+        try {
+            Usuario usuario = usuarioRepository.findById(id).get();
+            if(!usuario.getBaja()) {
+                if (usuario.getCarritos().size() == 0) {
+                    usuarioRepository.deleteById(id);
+                    return ResponseEntity.ok("Borrado "+id);
+                } else {
+                    usuario.setBaja(true);
+                    return ResponseEntity.ok("Baja "+id);
+                }
             }
+            return new ResponseEntity<>("El usuario esta dado de baja",HttpStatus.NOT_ACCEPTABLE);
+        }catch(Exception e) {
+            return new ResponseEntity<>("El usuario no existe o esta dado de baja", HttpStatus.NOT_FOUND);
         }
     }
 }

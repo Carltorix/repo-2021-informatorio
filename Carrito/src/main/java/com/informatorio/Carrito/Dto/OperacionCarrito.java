@@ -1,6 +1,8 @@
 package com.informatorio.Carrito.Dto;
 
-public class OperacionCarrito {
+import java.io.Serializable;
+
+public class OperacionCarrito implements Serializable {
 
     private Integer cantidad;
     private Long productoId;
@@ -16,7 +18,6 @@ public class OperacionCarrito {
     public Long getProductoId() {
         return productoId;
     }
-
     public void setProductoId(Long productoId) {
         this.productoId = productoId;
     }

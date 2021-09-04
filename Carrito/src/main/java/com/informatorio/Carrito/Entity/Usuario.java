@@ -42,16 +42,12 @@ public class Usuario {
     @UpdateTimestamp
     private LocalDate fechaUltimaModificacion;
 
-    @NotBlank
     private String direccion;
 
-    @NotBlank
     private String ciudad;
 
-    @NotBlank
     private String provincia;
 
-    @NotBlank
     private String país;
 
     private boolean baja = false;
@@ -62,7 +58,6 @@ public class Usuario {
     private List<Orden> ordenes = new ArrayList<>();
 
     public Usuario() {
-
     }
 
     public Usuario(String nombre,String apellido,String nombreDeUsuario) {
